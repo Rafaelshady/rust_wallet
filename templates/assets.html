@@ -1,41 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assets</title>
+    <title>Painel | Carteira de Investimentos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-950 text-white min-h-screen" style="font-family: 'Space Mono', monospace;">
+<body class="text-emerald-50 min-h-screen" style="font-family: 'Space Mono', monospace; background: radial-gradient(circle at 20% 0%, #1d4d35 0%, #0b1f16 38%, #050c09 100%);">
     <div class="max-w-5xl mx-auto px-6 py-10">
         <div class="flex justify-between items-center mb-8">
             <div>
-                <p class="text-xs uppercase tracking-[0.25em] text-cyan-400/70 mb-1">portfolio</p>
-                <h1 class="text-2xl font-semibold tracking-tight">dashboard</h1>
+                <p class="text-xs uppercase tracking-[0.25em] text-emerald-300/70 mb-1">carteira de investimentos</p>
+                <h1 class="text-2xl font-semibold tracking-tight text-emerald-50">Painel da carteira</h1>
             </div>
-            <span class="text-sm text-white/60">welcome, {{ user.username() }}</span>
+            <span class="text-sm text-emerald-100/55">Olá, {{ user.username() }}</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p class="text-xs uppercase tracking-wider text-white/40">positions</p>
+            <div class="bg-emerald-950/35 border border-emerald-200/10 rounded-2xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+                <p class="text-xs uppercase tracking-wider text-emerald-100/40">posições</p>
                 <p class="text-2xl font-semibold mt-2">{{ summary.asset_count }}</p>
             </div>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p class="text-xs uppercase tracking-wider text-white/40">invested in USD</p>
+            <div class="bg-emerald-950/35 border border-emerald-200/10 rounded-2xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+                <p class="text-xs uppercase tracking-wider text-emerald-100/40">investido em USD</p>
                 <p class="text-xl font-semibold mt-2">{{ summary.total_invested | usd }}</p>
             </div>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p class="text-xs uppercase tracking-wider text-white/40">current value</p>
+            <div class="bg-emerald-950/35 border border-emerald-200/10 rounded-2xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+                <p class="text-xs uppercase tracking-wider text-emerald-100/40">valor atual</p>
                 <p class="text-xl font-semibold mt-2">{{ comparison.value_usd | usd }}</p>
-                <p class="text-xs text-cyan-300/70 mt-1">≈ {{ comparison.value_brl | brl }}</p>
-                <p class="text-[10px] text-white/30 mt-1">US$ 1 = R$ {{ comparison.usd_brl_rate | decimal }}</p>
+                <p class="text-xs text-emerald-300/75 mt-1">≈ {{ comparison.value_brl | brl }}</p>
+                <p class="text-[10px] text-emerald-100/30 mt-1">US$ 1 = R$ {{ comparison.usd_brl_rate | decimal }}</p>
             </div>
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4">
-                <p class="text-xs uppercase tracking-wider text-white/40">change in USD</p>
+            <div class="bg-emerald-950/35 border border-emerald-200/10 rounded-2xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.14)]">
+                <p class="text-xs uppercase tracking-wider text-emerald-100/40">resultado em USD</p>
                 {% if summary.total_change >= 0.0 %}
                 <p class="text-xl font-semibold mt-2 text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.6)]">+{{ summary.total_change | usd }}</p>
                 {% else %}
@@ -45,31 +45,31 @@
         </div>
 
         <div class="space-y-1">
-            <div class="grid grid-cols-12 gap-3 border-b border-white/10 pb-3 mb-4 text-xs text-white/40 uppercase tracking-wider">
-                <div class="col-span-3">name</div>
-                <div class="col-span-2 text-right">quantity</div>
-                <div class="col-span-2 text-right">invested</div>
-                <div class="col-span-2 text-right">current</div>
-                <div class="col-span-3 text-right">change</div>
+            <div class="grid grid-cols-12 gap-3 border-b border-emerald-200/10 pb-3 mb-4 text-xs text-emerald-100/40 uppercase tracking-wider">
+                <div class="col-span-3">nome</div>
+                <div class="col-span-2 text-right">quantidade</div>
+                <div class="col-span-2 text-right">investido</div>
+                <div class="col-span-2 text-right">atual</div>
+                <div class="col-span-3 text-right">resultado</div>
             </div>
 
-            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden">
+            <div class="bg-emerald-950/35 backdrop-blur-xl border border-emerald-200/10 rounded-2xl overflow-hidden shadow-[0_18px_50px_rgba(0,0,0,0.18)]">
                 {% if owned_assets.is_empty() %}
                 <div class="p-8 text-center">
-                    <p class="text-white/70">your portfolio is empty</p>
-                    <p class="text-xs text-white/40 mt-2">register your first purchase to start tracking it</p>
+                    <p class="text-emerald-50/75">Sua carteira está vazia</p>
+                    <p class="text-xs text-emerald-100/40 mt-2">Registre sua primeira compra para começar o acompanhamento</p>
                 </div>
                 {% endif %}
                 {% for asset in owned_assets %}
-                <div class="grid grid-cols-12 gap-3 p-4 border-b border-white/5 text-sm cursor-pointer hover:bg-white/5 transition-colors duration-200"
+                <div class="grid grid-cols-12 gap-3 p-4 border-b border-emerald-200/5 text-sm cursor-pointer hover:bg-emerald-300/[0.06] transition-colors duration-200"
                      onclick="document.getElementById('history-{{ loop.index }}').classList.toggle('hidden')">
                     <div class="col-span-3">
                         <p class="font-medium">{{ asset.name }}</p>
-                        <p class="text-[10px] text-white/30 mt-1">{{ asset.unit_value | usd }}/unit</p>
+                        <p class="text-[10px] text-emerald-100/30 mt-1">{{ asset.unit_value | usd }}/unidade</p>
                     </div>
-                    <div class="col-span-2 text-right text-white/80">{{ asset.quantity_owned | decimal }}</div>
-                    <div class="col-span-2 text-right text-white/80">{{ asset.invested_value | usd }}</div>
-                    <div class="col-span-2 text-right text-white/80">{{ asset.current_value | usd }}</div>
+                    <div class="col-span-2 text-right text-emerald-50/80">{{ asset.quantity_owned | decimal }}</div>
+                    <div class="col-span-2 text-right text-emerald-50/80">{{ asset.invested_value | usd }}</div>
+                    <div class="col-span-2 text-right text-emerald-50/80">{{ asset.current_value | usd }}</div>
                     {% if asset.value_delta >= 0.0 %}
                     <div class="col-span-3 text-right text-emerald-400 drop-shadow-[0_0_6px_rgba(52,211,153,0.6)]">+{{ asset.value_delta | usd }}</div>
                     {% else %}
@@ -77,15 +77,15 @@
                     {% endif %}
                 </div>
 
-                <div id="history-{{ loop.index }}" class="bg-white/[0.03] hidden">
-                    <div class="grid grid-cols-12 gap-4 p-2 px-4 border-b border-white/5 text-xs text-white/30">
-                        <div class="col-span-4">purchase date</div>
-                        <div class="col-span-2 text-right">quantity</div>
-                        <div class="col-span-3 text-right">bought for</div>
-                        <div class="col-span-3 text-right">change</div>
+                <div id="history-{{ loop.index }}" class="bg-black/15 hidden">
+                    <div class="grid grid-cols-12 gap-4 p-2 px-4 border-b border-emerald-200/5 text-xs text-emerald-100/30">
+                        <div class="col-span-4">data da compra</div>
+                        <div class="col-span-2 text-right">quantidade</div>
+                        <div class="col-span-3 text-right">preço de compra</div>
+                        <div class="col-span-3 text-right">resultado</div>
                     </div>
                     {% for purchase in asset.purchase_history.0 %}
-                    <div class="grid grid-cols-12 gap-4 p-2 px-4 border-b border-white/5 text-xs text-white/60 last:border-b-0">
+                    <div class="grid grid-cols-12 gap-4 p-2 px-4 border-b border-emerald-200/5 text-xs text-emerald-50/60 last:border-b-0">
                         <div class="col-span-4">{{ purchase.bought_at | human_datetime }}</div>
                         <div class="col-span-2 text-right">{{ purchase.quantity_bought | decimal }}</div>
                         <div class="col-span-3 text-right">{{ purchase.bought_for | usd }}</div>
@@ -105,34 +105,34 @@
             <button
                 type="button"
                 onclick="document.getElementById('purchaseDialog').showModal()"
-                class="px-5 py-2.5 bg-cyan-500/20 border border-cyan-400/30 rounded-xl text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-all duration-300"
+                class="px-5 py-2.5 bg-emerald-400/20 border border-emerald-300/35 rounded-xl text-emerald-200 text-sm font-medium hover:bg-emerald-400/30 hover:border-emerald-300/55 hover:shadow-[0_0_20px_rgba(52,211,153,0.18)] transition-all duration-300"
             >
-                register purchase
+                Registrar compra
             </button>
-            <a href="/logout" class="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white/60 text-sm hover:bg-white/10 hover:text-white transition-all duration-300 inline-block">logout</a>
+            <a href="/logout" class="px-5 py-2.5 bg-emerald-950/35 border border-emerald-200/10 rounded-xl text-emerald-100/55 text-sm hover:bg-emerald-900/50 hover:text-emerald-50 transition-all duration-300 inline-block">Sair</a>
         </div>
 
-        <dialog id="purchaseDialog" class="bg-slate-900/90 backdrop-blur-2xl border border-white/10 rounded-2xl p-8 max-w-md w-full text-white shadow-[0_0_40px_rgba(34,211,238,0.15)] backdrop:bg-black/70">
-            <h2 class="text-lg font-semibold text-white mb-6">register purchase</h2>
+        <dialog id="purchaseDialog" class="bg-[#0b1f16]/95 backdrop-blur-2xl border border-emerald-200/15 rounded-2xl p-8 max-w-md w-full text-emerald-50 shadow-[0_0_45px_rgba(52,211,153,0.16)] backdrop:bg-black/75">
+            <h2 class="text-lg font-semibold text-emerald-50 mb-6">Registrar compra</h2>
 
             <form method="POST" action="/assets" class="space-y-5">
                 <div>
-                    <label for="assetId" class="block text-sm text-white/50 mb-1.5">asset</label>
+                    <label for="assetId" class="block text-sm text-emerald-100/50 mb-1.5">ativo</label>
                     <select
                         id="assetId"
                         name="asset_id"
                         required
-                        class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_10px_rgba(34,211,238,0.15)] transition-all duration-300"
+                        class="w-full bg-black/20 border border-emerald-200/15 rounded-lg px-3 py-2 text-emerald-50 focus:outline-none focus:border-emerald-400/60 focus:shadow-[0_0_12px_rgba(52,211,153,0.16)] transition-all duration-300"
                     >
-                        <option value="" class="bg-slate-900 text-white">select an asset</option>
+                        <option value="" class="bg-[#0b1f16] text-emerald-50">selecione um ativo</option>
                         {% for asset in available_assets %}
-                        <option value="{{ asset.id }}" class="bg-slate-900 text-white">{{ asset.name }}</option>
+                        <option value="{{ asset.id }}" class="bg-[#0b1f16] text-emerald-50">{{ asset.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
 
                 <div>
-                    <label for="unitValue" class="block text-sm text-white/50 mb-1.5">unit value</label>
+                    <label for="unitValue" class="block text-sm text-emerald-100/50 mb-1.5">preço unitário</label>
                     <input
                         type="number"
                         id="unitValue"
@@ -141,12 +141,12 @@
                         min="0.01"
                         inputmode="decimal"
                         required
-                        class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_10px_rgba(34,211,238,0.15)] transition-all duration-300"
+                        class="w-full bg-black/20 border border-emerald-200/15 rounded-lg px-3 py-2 text-emerald-50 focus:outline-none focus:border-emerald-400/60 focus:shadow-[0_0_12px_rgba(52,211,153,0.16)] transition-all duration-300"
                     >
                 </div>
 
                 <div>
-                    <label for="quantity" class="block text-sm text-white/50 mb-1.5">quantity</label>
+                    <label for="quantity" class="block text-sm text-emerald-100/50 mb-1.5">quantidade</label>
                     <input
                         type="number"
                         id="quantity"
@@ -155,13 +155,13 @@
                         min="0.01"
                         inputmode="decimal"
                         required
-                        class="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_10px_rgba(34,211,238,0.15)] transition-all duration-300"
+                        class="w-full bg-black/20 border border-emerald-200/15 rounded-lg px-3 py-2 text-emerald-50 focus:outline-none focus:border-emerald-400/60 focus:shadow-[0_0_12px_rgba(52,211,153,0.16)] transition-all duration-300"
                     >
                 </div>
 
                 <div class="flex gap-3 pt-2">
-                    <button type="submit" class="flex-1 px-4 py-2.5 bg-cyan-500/20 border border-cyan-400/30 rounded-xl text-cyan-400 text-sm font-medium hover:bg-cyan-500/30 transition-all duration-300">register</button>
-                    <button type="button" onclick="document.getElementById('purchaseDialog').close()" class="px-4 py-2.5 bg-white/5 border border-white/10 rounded-xl text-white/60 text-sm hover:bg-white/10 hover:text-white transition-all duration-300">cancel</button>
+                    <button type="submit" class="flex-1 px-4 py-2.5 bg-emerald-400/20 border border-emerald-300/35 rounded-xl text-emerald-200 text-sm font-medium hover:bg-emerald-400/30 transition-all duration-300">Registrar</button>
+                    <button type="button" onclick="document.getElementById('purchaseDialog').close()" class="px-4 py-2.5 bg-emerald-950/40 border border-emerald-200/10 rounded-xl text-emerald-100/55 text-sm hover:bg-emerald-900/55 hover:text-emerald-50 transition-all duration-300">Cancelar</button>
                 </div>
             </form>
         </dialog>

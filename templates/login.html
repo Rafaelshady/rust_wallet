@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Entrar | Carteira de Investimentos</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -17,36 +17,42 @@
 </head>
 
 <body
-    class="bg-slate-950 flex justify-center items-center min-h-screen"
-    style="font-family: 'Space Mono', monospace;"
+    class="flex justify-center items-center min-h-screen px-6 text-emerald-50"
+    style="font-family: 'Space Mono', monospace; background: radial-gradient(circle at 20% 0%, #1d4d35 0%, #0b1f16 42%, #050c09 100%);"
 >
-    <div class="w-full max-w-sm bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-[0_0_30px_rgba(34,211,238,0.1)]">
+    <div class="w-full max-w-sm bg-emerald-950/50 backdrop-blur-xl border border-emerald-200/15 rounded-3xl p-8 shadow-[0_0_45px_rgba(52,211,153,0.12)]">
+
+        <div class="mb-7">
+            <p class="text-xs uppercase tracking-[0.28em] text-emerald-300/70 mb-2">carteira de investimentos</p>
+            <h1 class="text-2xl font-bold text-emerald-50">Bem-vindo de volta</h1>
+            <p class="text-sm text-emerald-100/45 mt-2">Acesse sua carteira para acompanhar seus investimentos</p>
+        </div>
 
         <form method="POST" action="/login" class="flex flex-col gap-5">
 
             <input
                 type="text"
                 name="username"
-                placeholder="username"
+                placeholder="nome de usuário"
                 required
                 autocomplete="username"
-                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all duration-300"
+                class="w-full px-4 py-3 bg-black/20 border border-emerald-200/15 rounded-xl text-emerald-50 placeholder-emerald-100/30 focus:outline-none focus:border-emerald-400/60 focus:bg-emerald-950/40 focus:shadow-[0_0_15px_rgba(52,211,153,0.18)] transition-all duration-300"
             >
 
             <input
                 type="password"
                 name="password"
-                placeholder="password"
+                placeholder="senha"
                 required
                 autocomplete="current-password"
-                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-cyan-400/50 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all duration-300"
+                class="w-full px-4 py-3 bg-black/20 border border-emerald-200/15 rounded-xl text-emerald-50 placeholder-emerald-100/30 focus:outline-none focus:border-emerald-400/60 focus:bg-emerald-950/40 focus:shadow-[0_0_15px_rgba(52,211,153,0.18)] transition-all duration-300"
             >
 
             <button
                 type="submit"
-                class="px-4 py-3 bg-cyan-500/20 border border-cyan-400/30 rounded-xl text-cyan-400 font-medium hover:bg-cyan-500/30 hover:shadow-[0_0_20px_rgba(34,211,238,0.3)] active:bg-cyan-500/40 transition-all duration-300"
+                class="px-4 py-3 bg-emerald-400/20 border border-emerald-300/35 rounded-xl text-emerald-200 font-bold hover:bg-emerald-400/30 hover:border-emerald-300/55 hover:shadow-[0_0_22px_rgba(52,211,153,0.25)] active:bg-emerald-400/40 transition-all duration-300"
             >
-                submit
+                Entrar
             </button>
 
         </form>

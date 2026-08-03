@@ -4,17 +4,17 @@ use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum AppError {
-    #[error("Asset does not exist")]
+    #[error("Ativo não encontrado")]
     AssetDoesNotExist,
-    #[error("Invalid credentials")]
+    #[error("Credenciais inválidas")]
     InvalidCredentials,
-    #[error("User does not exist")]
+    #[error("Usuário não encontrado")]
     UserDoesNotExist,
-    #[error("This username is already registered")]
+    #[error("Este nome de usuário já está cadastrado")]
     UsernameTaken,
-    #[error("Missing authorization header")]
+    #[error("Autorização não informada")]
     MissingAuthorization,
-    #[error("Invalid purchase: {0}")]
+    #[error("Compra inválida: {0}")]
     InvalidPurchase(String),
     #[error(transparent)]
     Database(#[from] sqlx::Error),

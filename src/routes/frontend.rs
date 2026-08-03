@@ -139,13 +139,13 @@ pub async fn purchase_asset(
 fn validate_purchase(request: &PurchaseAssetForm) -> Result<(), AppError> {
     if !request.quantity.is_finite() || request.quantity <= 0.0 {
         return Err(AppError::InvalidPurchase(
-            "quantity must be greater than zero".to_string(),
+            "a quantidade deve ser maior que zero".to_string(),
         ));
     }
 
     if !request.unit_value.is_finite() || request.unit_value <= 0.0 {
         return Err(AppError::InvalidPurchase(
-            "unit value must be greater than zero".to_string(),
+            "o preço unitário deve ser maior que zero".to_string(),
         ));
     }
 
